@@ -1,8 +1,8 @@
 package GSonSS;
 
 import java.io.*;
-import org.json.simple.*;
 import java.util.*;
+import com.google.gson.*;
 
 public class WriteRead{
 
@@ -22,40 +22,58 @@ public class WriteRead{
     }
 
   }
-
+//Metodo que escribe un .json con datos de un Array de tipo String
   public void writeJson(){
-    Map obj=new LinkedHashMap();
-    obj.put("Nombre",this.datos[0]);
-    obj.put("Edad", this.datos[1]);
-    obj.put("Tipo de Sangre", this.datos[2]);
-    obj.put("Telefono", this.datos[3]);
-    obj.put("Genero", this.datos[4]);
-    obj.put("Correo", this.datos[5]);
-    obj.put("Escuela", this.datos[6]);
-    obj.put("Matricula", this.datos[7]);
-    obj.put("Carrera", this.datos[8]);
-    obj.put("Grupo", this.datos[9]);
+    Map<String, String> map= new LinkedHashMap<String, String>();
+    map.put("Nombre",this.datos[0]);
+    map.put("Edad", this.datos[1]);
+    map.put("Tipo de Sangre", this.datos[2]);
+    map.put("Telefono", this.datos[3]);
+    map.put("Genero", this.datos[4]);
+    map.put("Correo", this.datos[5]);
+    map.put("Escuela", this.datos[6]);
+    map.put("Matricula", this.datos[7]);
+    map.put("Carrera", this.datos[8]);
+    map.put("Grupo", this.datos[9]);
+    Gson gson = new Gson();
 
-    String jsonText = JSONValue.toJSONString(obj);
-    System.out.print(nombre_compl);
+    try {
+      FileWriter file = new FileWriter(nombre_json);
+      file.write(gson.toJson(map));
+      file.flush();
+      file.close();
+    }catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
+  public String [] recoveryData(){
 
-  /*public String [] recoveryData(){
-
-    JSONParser parser = new JSONParser(this.nombre_json);
+    JsonParser parser = new JsonParser();
 
     try {
 
       Object obj = parser.parse(new FileReader(this.nombre_json));
 
+      JsonObject jsonObject = (JsonObject) obj;
+
+      String nombre = (String) jsonObject.get("Nombre")
+      System.out.println(nombre);
+
+      String edad = ....
 
 
-    }catch
+    }catch(FileNotFoundException e){
+      e.printStackTrace();
+    }catch (IOException e) {
+      e.printStackTrace();
+    }catch (ParseException e) {
+      e.printStackTrace();
+    }
 
 
 
-  }*/
+  }
 
 
 
