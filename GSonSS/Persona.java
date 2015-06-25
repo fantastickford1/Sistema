@@ -1,4 +1,4 @@
-package GsonSS;
+package GSonSS;
 
 public class Persona{
 
@@ -10,12 +10,12 @@ public class Persona{
   public String gender;
 
   public Persona(){
-    this.nombre_compl = " ";
-    this.bloodType = " ";
-    this.phoneNumber = " ";
-    this.e_mail = " ";
-    this.age = " ";
-    this.gender = " ";
+    this.nombre_compl = "";
+    this.bloodType = "";
+    this.phoneNumber = 0;
+    this.e_mail = "";
+    this.age = 0;
+    this.gender = "";
   }
 
   public Persona(String nombre_compl, String bloodType, long phoneNumber, String e_mail, int age, String gender){
