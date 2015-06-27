@@ -1,4 +1,5 @@
 package GSonSS;
+import java.util.*;
 
 public class Alumnos extends Persona {
 
@@ -6,46 +7,40 @@ public class Alumnos extends Persona {
   public String matricula;
   public String carrera;
   public String grupo;
-  public boolean enable;
+  public String enable;
+  private Scanner keyboard2;
 
   public Alumnos(){
     super();
-    this.escuela = "";
-    this.matricula = "";
-    this.carrera = "";
-    this.grupo = "";
-    this.enable = false;
+    this.enable = "True";
   }
 
-  public Alumnos(String nombre_compl, String bloodType, long phoneNumber, String e_mail, int age, String gender, boolean enable){
-    super(nombre_compl, bloodType, phoneNumber, e_mail, age, gender);
-    this.enable = true;
-  }
-
-  public String getEscuela(String escuela){
-    this.escuela = escuela;
+  public String getEscuela(){
+    keyboard2 = new Scanner(System.in);
+    this.escuela = keyboard2.nextLine();
     return this.escuela;
   }
 
-  public String getMatric(String matricula){
-    this.matricula = matricula;
+  public String getMatric(){
+    keyboard2 = new Scanner(System.in);
+    this.matricula = keyboard2.nextLine();
     return this.matricula;
   }
 
-  public String getCarrera(String carrera){
-    this.carrera = carrera;
+  public String getCarrera(){
+    keyboard2 = new Scanner(System.in);
+    this.carrera = keyboard2.nextLine();
     return this.carrera;
   }
 
-  public String getGrupo(String grupo){
-    this.grupo = grupo;
+  public String getGrupo(){
+    keyboard2 = new Scanner(System.in);
+    this.grupo = keyboard2.nextLine();
     return grupo;
   }
 
-  public boolean getStatus(){
+  public String getStatus(){
     return this.enable;
   }
-
-
 
 }

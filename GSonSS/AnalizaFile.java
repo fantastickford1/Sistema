@@ -69,7 +69,7 @@ public class AnalizaFile{
       br = new BufferedReader(fr);
       rdline = br.readLine();     //lee una linea
     }catch(java.io.IOException ioex){
-      return "ERROR,  especificar un nombre de archivo";
+      return "ERROR,  no se ha encontrado el archivo";
     }finally{
       try{
         if(null != fr){
@@ -101,6 +101,11 @@ public class AnalizaFile{
       }
     }
     return lastLine;
+  }
+
+  public String[] SplitStrings(String stringto, String spl){
+    String[] x = stringto.split(spl);
+    return x;
   }
 //Metodo que sirve como auxiliar para recibir el nombre del txt si se usa el Constructor por defecto//
   public void setFileName(String nfile){
