@@ -9,11 +9,9 @@ public class WriteRead{
   private String recovery; //se guarda un array con los datos recuperados del .json
   private String nombre_json; //guarda el nombre del .json obtenido por el Constructor
   private String [] datos; //guarda el array con datos obtenidos por el metodo setStringJS
-  public String[] allrecor;
-  private int sze;
+  private String[] allrecor; //guarda datos recuperados del .json ya spliteados
   /////////////////////////
-  private int nm = 0;
-  private int tm = 0;
+  //private int nm = 0;
 
  //Constructor por defecto
   public WriteRead(){
@@ -24,6 +22,7 @@ public class WriteRead{
 //Constructor que recibe el nombre del .json
   public WriteRead(String jsonName){
     this.nombre_json = jsonName;
+    this.recovery = " ";
 
   }
 //metodo copia el array string con datos ingresados por el Usuario
@@ -33,11 +32,7 @@ public class WriteRead{
           this.datos[aux1]= datos[aux1];
     }
   }
-
-  /*ublic void setSize(int size){
-    this.sze = size;
-  }*/
-
+//leer archivo json y regresa si se pudo o no
   public boolean leerJson(){
     try {
       FileReader rd = new FileReader(nombre_json);
@@ -50,7 +45,7 @@ public class WriteRead{
 
 
 //Metodo que escribe un .json con datos de un Array de tipo String
-  public void writeJson(int usr){
+  public void writeJson(){
     Gson gson = new Gson();
     JsonArray  usuario = new JsonArray();
     JsonObject alumnos = new JsonObject();
@@ -100,8 +95,8 @@ public class WriteRead{
     JsonParser parser = new JsonParser();
     try {
       FileReader fr = new FileReader(nombre_json);
-      JsonElement datos = parser.parse(fr);
-      dumpGsonElement(datos);
+      JsonElement data = parser.parse(fr);
+      dumpGsonElement(data);
     }catch(FileNotFoundException e){
       e.printStackTrace();
     }
@@ -149,16 +144,16 @@ public class WriteRead{
   }
 /////////////////////////////////////////////////////////////////////////
 public String[] recoveryData(){
-  JsonElement datos2;
+  JsonElement report;
   JsonParser parser = new JsonParser();
   try {
     FileReader fr = new FileReader(nombre_json);
-    datos2 = parser.parse(fr);
-    allrecor = dumpGsonElement2(datos2).split(":");
+    report = parser.parse(fr);
+    allrecor = dumpGsonElement2(report).split(":"); // se guarda los datos recuperados del .json en allrecor[]
   }catch(FileNotFoundException e){
     e.printStackTrace();
   }
-    return allrecor;
+    return allrecor; //retorno del array de string con un espacio extra
 }
 //////////////////////////////////////////////////////////////////////
 

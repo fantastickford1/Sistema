@@ -1,9 +1,37 @@
 package GSonSS;
+
+import java.util.*;
+
 public class Menu extends Alumnos{
+
+    private Scanner keyboard;
+
 
     public Menu(){
 
     }
+
+
+    public int MenuContext(){
+      keyboard = new Scanner(System.in);
+      System.out.println("-----------------Menu----------------");
+      System.out.println("Selecione una opcion a realizar");
+      System.out.println("1. Agregar Usuario");
+      System.out.println("2. Borrar Usuario");
+      System.out.println("3. Actualizar Usuario");
+      System.out.println("4. Listar Usuarios");
+      System.out.println("5. Configuracion");
+      System.out.println("5. Mostar Creditos");
+      System.out.println("6. Salir");
+      System.out.println("--------------------------------------------");
+      System.out.println("\n");
+      System.out.print("Opcion: ");
+      int op = keyboard.nextInt();
+      System.out.println("\n");
+      return op;
+    }
+
+
 
     public String[] Option1(String[] us, int num_repetir){
       int aux11 = 0;
