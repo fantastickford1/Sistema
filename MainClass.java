@@ -68,6 +68,10 @@ public class MainClass{
               }
 
               case 5:{
+
+              }
+
+              case 6:{
                 System.out.println("******************CREDITOS*********************");
                 System.out.println("Carlos Alejandro Zenteno Robles"+"\tMatricula: 143382");
                 System.out.println("Diana ALondra Toledo Maza"+"\tMatricula: 143355");
@@ -80,10 +84,8 @@ public class MainClass{
                 break;
               }
 
-              case 6:{
-                exitState = false;
+              case 7:exitState = false;
                 break;
-              }
 
               default: System.out.println("Obcion no valida");
                 break;
@@ -112,21 +114,41 @@ public class MainClass{
                 for (int y = 0; y < temporal.length ; y++ ) {
                   temporal[y] = recup[y+1];
                 }
-                System.out.println("Introduce el numero de usuarios a borrar");
-                int usr2 = keyboard.nextInt();
-                int rt = 0;
-                int lw = 0;
-                int p = 0;
-                while ( p < usr2 ) {
-                  System.out.println("Ingrese la matricula del usuario a borrar");
-                  String matr = keyboard.next();
-                  if (matr == temporal[rt+7]) {
-                    temporal[lw+10] = "False";
+                int fila = temporal.length/10;
+                String[][] temporal2 = new String[fila][11];
+                for (int w = 0; w < fila ; w++ ) {
+                  for (int r = 0; r < 11; r++ ) {
+
                   }
-                  p++;
                 }
-                jasnWR.setStringJS(temporal);
-                jasnWR.writeJson();
+                int k = 0;
+                if (recup[y+1] != "True") {
+                  temporal2[k][y] = recup[y+1];
+                }else{
+                  temporal2[k][y] = recup[y+1];
+                  k++;
+                }
+                System.out.println(temporal2[k][y]);
+
+                //System.out.println("Introduce el numero de usuarios a borrar");
+                //int usr2 = keyboard.nextInt();
+        //        int rt;
+        //        int lw = 10;
+                //int p = 0; //contador
+                //while ( p < usr2 ) {
+      //            System.out.println("Ingrese la matricula del usuario a borrar");
+        //          String matr = keyboard.next();
+        //          for (rt = 7; rt < temporal.length ; rt+=7 ) {
+        //            System.out.println(temporal[rt]);
+        //            if (matr == temporal[rt]) {
+        //              temporal[lw] = "False";
+        //              lw+=10;
+        //            }
+      //              lw+=10;
+      //            }
+                //}
+      //          jasnWR.setStringJS(temporal);
+      //          jasnWR.writeJson();
                 break;
               }
 

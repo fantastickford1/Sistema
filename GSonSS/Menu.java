@@ -21,8 +21,8 @@ public class Menu extends Alumnos{
       System.out.println("3. Actualizar Usuario");
       System.out.println("4. Listar Usuarios");
       System.out.println("5. Configuracion");
-      System.out.println("5. Mostar Creditos");
-      System.out.println("6. Salir");
+      System.out.println("6. Mostar Creditos");
+      System.out.println("7. Salir");
       System.out.println("--------------------------------------------");
       System.out.println("\n");
       System.out.print("Opcion: ");
