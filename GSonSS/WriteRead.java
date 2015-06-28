@@ -51,9 +51,8 @@ public class WriteRead{
     Gson gson = new Gson();
     JsonArray  usuario = new JsonArray();
     JsonObject alumnos = new JsonObject();
-
     for (int q = 0; q < this.datos.length ; q++ ) {
-      if(this.datos[q][10] == "True"){
+      if(this.datos[q][10].equals("True")){
         JsonObject personah = new JsonObject();
         personah.addProperty("Nombre",this.datos[q][0]);
         personah.addProperty("Edad", this.datos[q][1]);
@@ -70,7 +69,6 @@ public class WriteRead{
       }
     }
     alumnos.add("Alumnos",usuario);
-
     try {
       FileWriter file = new FileWriter(nombre_json);
       file.write(gson.toJson(alumnos));

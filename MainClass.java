@@ -15,6 +15,7 @@ public class MainClass{
     Redimensiona redimesion;
     Menu menu = new Menu();//crea objeto menu
     Scanner keyboard = new Scanner(System.in);
+    Alumnos alum = new Alumnos();
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     System.out.println("------------------Bienvenido------------------------\n");
@@ -107,7 +108,7 @@ public class MainClass{
               }
 
               case 2:{
-                keyboard = new Scanner(System.in);
+                //keyboard = new Scanner(System.in);
                 recup = jasnWR.recoveryData();
                 String[] temporal = new String[recup.length-1];
                 for (int y = 0; y < temporal.length ; y++ ) {
@@ -124,33 +125,61 @@ public class MainClass{
                 }
                 System.out.println("Ingrese la matricula del usuario a borrar");
                 String matr = keyboard.next();
-                //System.out.println("antes del for");
                 for (int w = 0; w < temporal2.length ; w++ ) {
-                //  System.out.println("dentro del for");
-                  //System.out.println(matr);
-                  //System.out.println(temporal2[w][7]);
                   if (temporal2[w][7].equals(matr)) {
                     temporal2[w][10] = "False";
                   }else if (matr != temporal2[w][7]) {
-                    System.out.println("else");
                     temporal2[w][10] = "True";
                   }
-                }
-                System.out.println("After for");
-                for (int w = 0; w < fila ; w++ ) {
-                  for (int r = 0; r < 11; r++ ){
-                      System.out.println(temporal2[w][r]);
-                  }
-                }
-
+                 }
                 jasnWR.setStringJS(temporal2);
                 jasnWR.writeJson();
                 break;
               }
 
               case 3:{
-                System.out.println("Introduce el numero de usuarios a actualizar");
-                int usr3 = keyboard.nextInt();
+                recup = jasnWR.recoveryData();
+                String[] temporal = new String[recup.length-1];
+                for (int y = 0; y < temporal.length ; y++ ) {
+                  temporal[y] = recup[y+1];
+                }
+                int fila = temporal.length/10;
+                String[][] temporal3 = new String[fila][11];
+                int g = 1;
+                for (int w = 0; w < fila ; w++ ) {
+                  for (int r = 0; r < 11; r++ ){
+                    temporal3[w][r] = recup[g];
+                    g++;
+                  }
+                }
+                System.out.println("Introduce la matricula del usuarios a actualizar");
+                String usr3 = keyboard.next();
+                for (int w = 0; w < temporal3.length ; w++ ) {
+                  if (temporal3[w][7].equals(usr3)) {
+                    System.out.print("\nNombre completo: ");
+                    temporal3[w][0] = alum.getNombre();
+                    System.out.print("\nEdad: ");
+                    temporal3[w][1]  = alum.getAge();
+                    System.out.print("\nTipo de Sangre: ");
+                    temporal3[w][2]  = alum.getBlood();
+                    System.out.print("\nTelefono: ");
+                    temporal3[w][3]  = alum.getNumber();
+                    System.out.print("\nGenero: ");
+                    temporal3[w][4]  =alum.getGender();
+                    System.out.print("\nCorreo: ");
+                    temporal3[w][5]  = alum.getEMail();
+                    System.out.print("\nEscuela: ");
+                    temporal3[w][6]  = alum.getEscuela();
+                    System.out.print("\nMatricula: ");
+                    temporal3[w][7]  = alum.getMatric();
+                    System.out.print("\nCarrera: ");
+                    temporal3[w][8]  = alum.getCarrera();
+                    System.out.print("\nGrupo: ");
+                    temporal3[w][9]  = alum.getGrupo();
+                  }
+                }
+                jasnWR.setStringJS(temporal3);
+                jasnWR.writeJson();
                 break;
               }
 
