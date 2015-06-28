@@ -4,7 +4,7 @@ public class MainClass{
 
   public static void main(String[] args) {
     //AnalizaFile lee = n
-    String [] usurario; //array que guarda todos los datos
+    String [][] usurario; //array que guarda todos los datos
     String [] recup; //Array para guardar datos recuperados del .json
     String conf;//contenedor del nombre del archivo configura
     String jsonName = " "; //contenedor del nombre del archivo .json
@@ -35,8 +35,7 @@ public class MainClass{
               case 1:{ //agregar a una clase//
                 System.out.println("Introduce el numero de usuarios a agregar");
                 int usr1 = keyboard.nextInt();
-                tam = usr1 * 11;
-                usurario = new String[tam];
+                usurario = new String[usr1][11];
                 usurario = menu.Option1(usurario,usr1);
                 jasnWR = new WriteRead(jsonName);
                 jasnWR.setStringJS(usurario);
@@ -98,10 +97,10 @@ public class MainClass{
               case 1:{ //agregar a una clase//
                 System.out.println("Introduce el numero de usuarios a agregar");
                 int usr1 = keyboard.nextInt();
-                tam = usr1 * 11;
-                usurario = new String[tam];
+                usurario = new String[usr1][11];
+                //System.out.println("Antes Option1");
                 usurario = menu.Option1(usurario,usr1);
-                //jasnWR = new WriteRead(jsonName);
+                //System.out.println("Despues Option1");
                 jasnWR.setStringJS(usurario);
                 jasnWR.writeJson();
                 break;
@@ -116,39 +115,24 @@ public class MainClass{
                 }
                 int fila = temporal.length/10;
                 String[][] temporal2 = new String[fila][11];
+                int g = 1;
                 for (int w = 0; w < fila ; w++ ) {
-                  for (int r = 0; r < 11; r++ ) {
-
+                  for (int r = 0; r < 11; r++ ){
+                    temporal2[w][r] = recup[g];
+                    g++;
                   }
                 }
-                int k = 0;
-                if (recup[y+1] != "True") {
-                  temporal2[k][y] = recup[y+1];
-                }else{
-                  temporal2[k][y] = recup[y+1];
-                  k++;
-                }
-                System.out.println(temporal2[k][y]);
+                System.out.println("Ingrese la matricula del usuario a borrar");
+                String matr = keyboard.next();
 
-                //System.out.println("Introduce el numero de usuarios a borrar");
-                //int usr2 = keyboard.nextInt();
-        //        int rt;
-        //        int lw = 10;
-                //int p = 0; //contador
-                //while ( p < usr2 ) {
-      //            System.out.println("Ingrese la matricula del usuario a borrar");
-        //          String matr = keyboard.next();
-        //          for (rt = 7; rt < temporal.length ; rt+=7 ) {
-        //            System.out.println(temporal[rt]);
-        //            if (matr == temporal[rt]) {
-        //              temporal[lw] = "False";
-        //              lw+=10;
-        //            }
-      //              lw+=10;
-      //            }
-                //}
-      //          jasnWR.setStringJS(temporal);
-      //          jasnWR.writeJson();
+                  for (int w = 0; w < fila ; w++ ) {
+                    if (temporal2[w][7] == matr) {
+                      System.out.println(temporal2[w][7]);
+                      temporal2[w][10] = "False";
+                    }
+                  }
+                jasnWR.setStringJS(temporal2);
+                jasnWR.writeJson();
                 break;
               }
 

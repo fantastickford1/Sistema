@@ -8,7 +8,7 @@ public class WriteRead{
 
   private String recovery; //se guarda un array con los datos recuperados del .json
   private String nombre_json; //guarda el nombre del .json obtenido por el Constructor
-  private String [] datos; //guarda el array con datos obtenidos por el metodo setStringJS
+  private String [][] datos; //guarda el array con datos obtenidos por el metodo setStringJS
   private String[] allrecor; //guarda datos recuperados del .json ya spliteados
   /////////////////////////
   //private int nm = 0;
@@ -17,7 +17,7 @@ public class WriteRead{
   public WriteRead(){
     this.recovery = " ";
     this.nombre_json = " ";
-    this.datos = new String[0];
+    this.datos = new String[0][0];
   }
 //Constructor que recibe el nombre del .json
   public WriteRead(String jsonName){
@@ -26,11 +26,17 @@ public class WriteRead{
 
   }
 //metodo copia el array string con datos ingresados por el Usuario
-  public void setStringJS(String[] datos){
-    this.datos = new String [datos.length];
+  public void setStringJS(String[][] datos){
+    System.out.println("IN METh");
+    this.datos = new String [datos.length][11];
+    //System.out.println(datos.length);
     for(int aux1=0; aux1<datos.length; aux1++){
-          this.datos[aux1]= datos[aux1];
+      System.out.println("");
+      for (int aux2 = 0; aux2 < 11 ; ) {
+        this.datos[aux1][aux2] = datos[aux1][aux2];
+      }
     }
+    System.out.println("OUT OF METh");
   }
 //leer archivo json y regresa si se pudo o no
   public boolean leerJson(){
@@ -50,33 +56,21 @@ public class WriteRead{
     JsonArray  usuario = new JsonArray();
     JsonObject alumnos = new JsonObject();
 
-    int cont = 0;
-    for (int t=10; t < this.datos.length; t+= 11 ) {
-      if(this.datos[t] == "True"){
-          JsonObject personah = new JsonObject();
-          personah.addProperty("Nombre",this.datos[cont]);
-          cont++;
-          personah.addProperty("Edad", this.datos[cont]);
-          cont++;
-          personah.addProperty("Tipo de Sangre", this.datos[cont]);
-          cont++;
-          personah.addProperty("Telefono", this.datos[cont]);
-          cont++;
-          personah.addProperty("Genero", this.datos[cont]);
-          cont++;
-          personah.addProperty("Correo", this.datos[cont]);
-          cont++;
-          personah.addProperty("Escuela", this.datos[cont]);
-          cont++;
-          personah.addProperty("Matricula", this.datos[cont]);
-          cont++;
-          personah.addProperty("Carrera", this.datos[cont]);
-          cont++;
-          personah.addProperty("Grupo", this.datos[cont]);
-          cont++;
-          personah.addProperty("Estado", this.datos[cont]);
-          cont++;
-          usuario.add(personah);
+    for (int q = 0; q < this.datos.length ; q++ ) {
+      if(this.datos[q][10] == "True"){
+        JsonObject personah = new JsonObject();
+        personah.addProperty("Nombre",this.datos[q][0]);
+        personah.addProperty("Edad", this.datos[q][1]);
+        personah.addProperty("Tipo de Sangre", this.datos[q][2]);
+        personah.addProperty("Telefono", this.datos[q][3]);
+        personah.addProperty("Genero", this.datos[q][4]);
+        personah.addProperty("Correo", this.datos[q][5]);
+        personah.addProperty("Escuela", this.datos[q][6]);
+        personah.addProperty("Matricula", this.datos[q][7]);
+        personah.addProperty("Carrera", this.datos[q][8]);
+        personah.addProperty("Grupo", this.datos[q][9]);
+        personah.addProperty("Estado", this.datos[q][10]);
+        usuario.add(personah);
       }
     }
     alumnos.add("Alumnos",usuario);

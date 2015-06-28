@@ -33,42 +33,31 @@ public class Menu extends Alumnos{
 
 
 
-    public String[] Option1(String[] us, int num_repetir){
-      int aux11 = 0;
+    public String[][] Option1(String[][] us, int num_repetir){
       for(int aux = 0 ; aux < num_repetir; aux++){
         System.out.print("\nNombre completo: ");
-        us[aux11] = this.getNombre();
-        aux11++;
+        us[aux][0] = this.getNombre();
         System.out.print("\nEdad: ");
-        us[aux11]  = this.getAge();
-          aux11++;
+        us[aux][1]  = this.getAge();
         System.out.print("\nTipo de Sangre: ");
-        us[aux11]  = this.getBlood();
-          aux11++;
+        us[aux][2]  = this.getBlood();
         System.out.print("\nTelefono: ");
-        us[aux11]  = this.getNumber();
-          aux11++;
+        us[aux][3]  = this.getNumber();
         System.out.print("\nGenero: ");
-        us[aux11]  =this.getGender();
-          aux11++;
+        us[aux][4]  =this.getGender();
         System.out.print("\nCorreo: ");
-        us[aux11]  = this.getEMail();
-          aux11++;
+        us[aux][5]  = this.getEMail();
         System.out.print("\nEscuela: ");
-        us[aux11]  = this.getEscuela();
-          aux11++;
+        us[aux][6]  = this.getEscuela();
         System.out.print("\nMatricula: ");
-        us[aux11]  = this.getMatric();
-          aux11++;
+        us[aux][7]  = this.getMatric();
         System.out.print("\nCarrera: ");
-        us[aux11]  = this.getCarrera();
-          aux11++;
+        us[aux][8]  = this.getCarrera();
         System.out.print("\nGrupo: ");
-        us[aux11]  = this.getGrupo();
-          aux11++;
-        us[aux11] = this.getStatus();
-          aux11++;
+        us[aux][9]  = this.getGrupo();
+        us[aux][10] = this.getStatus();
       }
+        System.out.println("OUT");
       return us;
     }
 
