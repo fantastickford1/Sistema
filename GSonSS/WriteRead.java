@@ -145,32 +145,32 @@ public String[] recoveryData(){
 }
 //////////////////////////////////////////////////////////////////////
 
-private String dumpGsonElement2(JsonElement element){
+  private String dumpGsonElement2(JsonElement element){
 
-  if(element.isJsonObject()){
-    JsonObject obj = element.getAsJsonObject();
-    Set<Map.Entry<String,JsonElement>> entradas = obj.entrySet();
-    Iterator<Map.Entry<String,JsonElement>> iter = entradas.iterator();
-    while(iter.hasNext()){
-      Map.Entry<String,JsonElement> entrada = iter.next();
-      //System.out.print(entrada.getKey() + ": ");
-      //Imprime la clave ejmpl: Nombre,Edad, etc...
-      dumpGsonElement2(entrada.getValue());
-    }
-  }else if(element.isJsonArray()){
-    JsonArray array = element.getAsJsonArray();
-    //System.out.println("Numero de usuarios: " + array.size());
-    Iterator<JsonElement> iter = array.iterator();
-    //int nm = 1;
-    while (iter.hasNext()) {
+    if(element.isJsonObject()){
+      JsonObject obj = element.getAsJsonObject();
+      Set<Map.Entry<String,JsonElement>> entradas = obj.entrySet();
+      Iterator<Map.Entry<String,JsonElement>> iter = entradas.iterator();
+      while(iter.hasNext()){
+        Map.Entry<String,JsonElement> entrada = iter.next();
+        //System.out.print(entrada.getKey() + ": ");
+        //Imprime la clave ejmpl: Nombre,Edad, etc...
+        dumpGsonElement2(entrada.getValue());
+      }
+    }else if(element.isJsonArray()){
+      JsonArray array = element.getAsJsonArray();
+      //System.out.println("Numero de usuarios: " + array.size());
+      Iterator<JsonElement> iter = array.iterator();
+      //int nm = 1;
+      while (iter.hasNext()) {
       //System.out.println("Usuario" + nm);
-      JsonElement entrada = iter.next();
+        JsonElement entrada = iter.next();
       //nm++;
-      dumpGsonElement2(entrada);
-    }
-  } else if (element.isJsonPrimitive()) {
-      //System.out.println("Es primitiva");
-      JsonPrimitive valor = element.getAsJsonPrimitive();
+        dumpGsonElement2(entrada);
+      }
+    } else if (element.isJsonPrimitive()) {
+        //System.out.println("Es primitiva");
+        JsonPrimitive valor = element.getAsJsonPrimitive();
       if (valor.isBoolean()) {
           //System.out.println("Es booleano: " + valor.getAsBoolean());
       } else if (valor.isNumber()) {
@@ -178,12 +178,31 @@ private String dumpGsonElement2(JsonElement element){
       } else if (valor.isString()) {
           recovery = recovery + ":" + valor.getAsString(); //guarda el valor que tiene la clave ejempl: Diana,15,A.....
       }
-  } else if (element.isJsonNull()) {
+    } else if (element.isJsonNull()) {
       System.out.println("Es NULL");
-  } else {
+    } else {
       System.out.println("Es otra cosa");
+    }
+    return recovery;
   }
-  return recovery;
-}
+
+
+  public void ReadString(String arch_name,String json){
+    File new_archivo = new File(arch_name);
+    try {
+      FileWriter fw = new FileWriter(new_archivo);
+      BufferedWriter bw = new BufferedWriter(fw);
+      PrintWriter pw = new PrintWriter(bw);
+      pw.println(json);
+      pw.close();
+      bw.close();
+    }catch (Exception e) {
+      System.out.println("Error" + e);
+    }
+
+  }
+
+
+
 
 }

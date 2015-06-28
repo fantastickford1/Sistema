@@ -129,4 +129,17 @@ public class Redimensiona{
     return nw_array;
   }
 
+  public String[][] redimensionaString2D(String[][] array_String2D, int new_filas){
+    int filas = new_filas + array_String2D.length;
+    String[][] nw_array = new String[filas][array_String2D[0].length];
+    int aux;
+    int aux2;
+      for (aux=0;aux < array_String2D.length;aux++ ) {
+        for (aux2=0; aux2 < array_String2D[0].length;aux2 ++ ) {
+          nw_array[aux][aux2] = array_String2D[aux][aux2];
+        }
+      }
+    return nw_array;
+  }
+
 }

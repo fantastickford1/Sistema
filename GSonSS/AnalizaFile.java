@@ -103,10 +103,6 @@ public class AnalizaFile{
     return lastLine;
   }
 
-  public String[] SplitStrings(String stringto, String spl){
-    String[] x = stringto.split(spl);
-    return x;
-  }
 //Metodo que sirve como auxiliar para recibir el nombre del txt si se usa el Constructor por defecto//
   public void setFileName(String nfile){
     aarchivo = nfile;
