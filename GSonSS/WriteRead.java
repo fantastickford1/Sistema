@@ -27,16 +27,12 @@ public class WriteRead{
   }
 //metodo copia el array string con datos ingresados por el Usuario
   public void setStringJS(String[][] datos){
-    System.out.println("IN METh");
     this.datos = new String [datos.length][11];
-    //System.out.println(datos.length);
     for(int aux1=0; aux1<datos.length; aux1++){
-      System.out.println("");
-      for (int aux2 = 0; aux2 < 11 ; ) {
+      for (int aux2 = 0; aux2 < 11 ; aux2++ ) {
         this.datos[aux1][aux2] = datos[aux1][aux2];
       }
     }
-    System.out.println("OUT OF METh");
   }
 //leer archivo json y regresa si se pudo o no
   public boolean leerJson(){

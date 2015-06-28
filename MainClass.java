@@ -124,13 +124,25 @@ public class MainClass{
                 }
                 System.out.println("Ingrese la matricula del usuario a borrar");
                 String matr = keyboard.next();
-
-                  for (int w = 0; w < fila ; w++ ) {
-                    if (temporal2[w][7] == matr) {
-                      System.out.println(temporal2[w][7]);
-                      temporal2[w][10] = "False";
-                    }
+                //System.out.println("antes del for");
+                for (int w = 0; w < temporal2.length ; w++ ) {
+                //  System.out.println("dentro del for");
+                  //System.out.println(matr);
+                  //System.out.println(temporal2[w][7]);
+                  if (temporal2[w][7].equals(matr)) {
+                    temporal2[w][10] = "False";
+                  }else if (matr != temporal2[w][7]) {
+                    System.out.println("else");
+                    temporal2[w][10] = "True";
                   }
+                }
+                System.out.println("After for");
+                for (int w = 0; w < fila ; w++ ) {
+                  for (int r = 0; r < 11; r++ ){
+                      System.out.println(temporal2[w][r]);
+                  }
+                }
+
                 jasnWR.setStringJS(temporal2);
                 jasnWR.writeJson();
                 break;

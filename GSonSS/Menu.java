@@ -57,7 +57,6 @@ public class Menu extends Alumnos{
         us[aux][9]  = this.getGrupo();
         us[aux][10] = this.getStatus();
       }
-        System.out.println("OUT");
       return us;
     }
 
